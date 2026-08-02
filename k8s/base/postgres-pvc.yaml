@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 
 metadata:
   name: postgres-pvc
+  namespace: flight-app-dev
 
 spec:
   accessModes:

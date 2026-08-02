@@ -3,6 +3,7 @@ kind: ConfigMap
 
 metadata:
   name: flight-app-config
+  namespace: flight-app-dev
 
 data:
   DB_HOST: "postgres"
