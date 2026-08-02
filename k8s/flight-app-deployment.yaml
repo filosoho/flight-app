@@ -25,6 +25,9 @@ spec:
             - containerPort: 5000
 
           envFrom:
+            - configMapRef:
+                name: flight-app-config
+
             - secretRef:
                 name: flight-app-secret
 
@@ -42,3 +45,10 @@ spec:
               port: 5000
             initialDelaySeconds: 10
             periodSeconds: 20
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10

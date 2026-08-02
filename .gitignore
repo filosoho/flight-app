@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .vscode/
 k8s/flight-app-secret.yaml
+postgres-secret.yaml
+flight-app-backup.sql
