@@ -1,0 +1,11 @@
+body {
+  background: url("/static/assets/images/clouds.jpg") no-repeat center center;
+}
+
+main {
+  height: 100vh;
+}
+
+button {
+  margin-top: 32px;
+}

@@ -1,0 +1,18 @@
+.venv
+__pycache__
+*.pyc
+.env
+.git
+.gitignore
+.vscode
+
+# Tests / tooling
+.pytest_cache
+.coverage
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artefacts
+*.log

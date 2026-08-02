@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker | Account Settings{% endblock %}
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/account-settings.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="settings-container">
+        <div class="page-header">
+            <div class="plane">⚙️</div>
+            <h1>Account Settings</h1>
+            <p class="subtitle">Manage your personal information and password.</p>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {% if category == "success" %}
+                            ✓
+                        {% elif category == "error" %}
+                            ⚠
+                        {% endif %}
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/account-settings" method="post">
+            <label for="name">Full Name</label>
+            <input type="text"
+                   id="name"
+                   name="name"
+                   value="{{ user.name if user else '' }}"
+                   placeholder="John Smith"
+                   required>
+            <label for="email">Email Address</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   value="{{ user.email if user else '' }}"
+                   placeholder="john@example.com"
+                   required>
+            <hr>
+            <h2>Change Password</h2>
+            <label for="current_password">Current Password</label>
+            <input type="password"
+                   id="current_password"
+                   name="current_password"
+                   placeholder="Current password">
+            <label for="new_password">New Password</label>
+            <input type="password"
+                   id="new_password"
+                   name="new_password"
+                   placeholder="New password">
+            <label for="confirm_password">Confirm New Password</label>
+            <input type="password"
+                   id="confirm_password"
+                   name="confirm_password"
+                   placeholder="Confirm new password">
+            <button type="submit">Save Changes</button>
+        </form>
+        <hr>
+        <div class="danger-zone">
+            <h3>Danger Zone</h3>
+            <p>This action is permanent. All your bookings and account data will be removed.</p>
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            <form action="{{ url_for("delete_account") }}"
+                  method="post"
+                  onsubmit="return confirm('Are you sure you want to permanently delete your account?');">
+                <label for="delete_password">Confirm Password</label>
+                <input type="password"
+                       id="delete_password"
+                       name="delete_password"
+                       placeholder="Enter your password"
+                       required>
+                <button type="submit" class="delete-button">Delete Account</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

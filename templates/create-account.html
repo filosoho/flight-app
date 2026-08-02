@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker | Sign Up{% endblock %}
+{% block styles %}
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/create-account.css') }}">
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="plane">✈️</div>
+    <h1>Create Account</h1>
+    <p class="subtitle">Join Flight Booker and start planning your next trip.</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action="{{ url_for("signup_page") }}" method="post">
+      <label for="username">Username</label>
+      <input type="text"
+             id="username"
+             name="username"
+             placeholder="john_doe"
+             required>
+      <label for="email">Email Address</label>
+      <input type="email"
+             id="email"
+             name="email"
+             placeholder="john@email.com"
+             required>
+      <label for="password">Password</label>
+      <input type="password"
+             id="password"
+             name="password"
+             placeholder="Create a password"
+             required>
+      <button type="submit">Create Account</button>
+    </form>
+    <div class="link-container">
+      Already have an account?
+      <a href="{{ url_for("login") }}">Log In</a>
+    </div>
+  </div>
+{% endblock %}

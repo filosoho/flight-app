@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker | Dashboard{% endblock %}
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="dashboard-header-container">
+                <div class="plane">✈️</div>
+                <h1>Welcome, {{ name }}!</h1>
+                <p class="subtitle">Manage your flights and plan your next journey.</p>
+            </div>
+        </header>
+        <section class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="dashboard-content">
+                    <div class="card-icon">🎫</div>
+                    <h2>My Bookings</h2>
+                    <p>View your booked flights and manage your upcoming journeys.</p>
+                </div>
+                <a href="{{ url_for("my_bookings") }}" class="dashboard-button">View Bookings</a>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-content">
+                    <div class="card-icon">🛫</div>
+                    <h2>Book a Flight</h2>
+                    <p>Choose your destination and reserve your next flight.</p>
+                </div>
+                <a href="{{ url_for("book_flight") }}" class="dashboard-button">Book Now</a>
+            </div>
+            <div class="dashboard-card">
+                <div class="dashboard-content">
+                    <div class="card-icon">⚙️</div>
+                    <h2>Account Settings</h2>
+                    <p>Manage your account details.</p>
+                </div>
+                <a href="{{ url_for("account_settings") }}" class="dashboard-button">Settings</a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

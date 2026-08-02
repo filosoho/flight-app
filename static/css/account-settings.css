@@ -1,0 +1,116 @@
+body {
+  align-items: flex-start;
+  background-attachment: fixed;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url("../images/dashboard-background.jpg");
+  background-position: center;
+  background-size: cover;
+  height: auto;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.settings-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 40px;
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 35px 0;
+}
+
+h2 {
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  margin-top: 32px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 14px 24px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.secondary-button {
+  background: white;
+  border: 2px solid #003366;
+  color: #003366;
+}
+
+.secondary-button:hover {
+  background: #003366;
+  color: white;
+}
+
+.danger-button {
+  background: #d32f2f;
+  color: white;
+}
+
+.danger-button:hover {
+  background: #b71c1c;
+}
+
+.danger-zone {
+  margin-top: 40px;
+  padding: 25px;
+  border: 1px solid #ffcccc;
+  border-radius: 10px;
+  background: #fff5f5;
+}
+
+.danger-zone h3 {
+  color: #cc0000;
+  margin-bottom: 10px;
+}
+
+.danger-zone p {
+  color: #666;
+  font-size: 14px;
+}
+
+.delete-button {
+  background: #dc3545;
+  margin-top: 16px;
+}
+
+.delete-button:hover {
+  background: #b02a37;
+}

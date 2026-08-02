@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker | Available Flights{% endblock %}
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/find-flights.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="flights-container">
+        <div class="page-header">
+            <div class="plane">🛫</div>
+            <h1>Available Flights</h1>
+            <p class="subtitle">Select the flight that suits you best.</p>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for flight in flights %}
+                        <tr>
+                            <td>{{ flight[1] }}</td>
+                            <td>{{ flight[2] }}</td>
+                            <td>{{ flight[3] }}</td>
+                            <td>{{ flight[4] }}</td>
+                            <td>${{ flight[5] }}</td>
+                            <td>
+                                <form action="/book-flight/{{ flight[0] }}" method="post">
+                                    <button type="submit" class="book-button">Book</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <a href="/book-flight" class="secondary-button">← Search Again</a>
+            <a href="/dashboard" class="primary-button">Dashboard</a>
+        </div>
+    </div>
+{% endblock %}

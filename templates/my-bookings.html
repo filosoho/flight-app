@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker | My Bookings{% endblock %}
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/my-bookings.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="bookings-container">
+        <div class="page-header">
+            <div class="plane">🧳</div>
+            <h1>My Bookings</h1>
+            <p class="subtitle">View and manage your upcoming flights.</p>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticket #</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr class="{% if booking.status == 'CANCELLED' %}cancelled-row{% endif %}">
+                            <td>{{ booking.ticket_number }}</td>
+                            <td>{{ booking.departure_state }}</td>
+                            <td>{{ booking.arrival_state }}</td>
+                            <td>{{ booking.departure_time }}</td>
+                            <td>{{ booking.arrival_time }}</td>
+                            <td>${{ booking.ticket_price }}</td>
+                            <td>
+                                {% if booking.status == "CONFIRMED" %}
+                                    <span class="status confirmed">Confirmed</span>
+                                {% else %}
+                                    <span class="status cancelled">Cancelled</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if booking.status == "CONFIRMED" %}
+                                    <form action="/cancel-booking/{{ booking.id }}" method="post">
+                                        <button type="submit" class="cancel-button">Cancel</button>
+                                    </form>
+                                {% else %}
+                                    <form action="/rebook/{{ booking.id }}" method="post">
+                                        <button type="submit" class="rebook-button">Re-book</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <a href="/dashboard" class="secondary-button">← Back to Dashboard</a>
+            <a href="/book-flight" class="primary-button">Book Another Flight</a>
+        </div>
+    </div>
+{% endblock %}

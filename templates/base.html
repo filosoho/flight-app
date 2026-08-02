@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="Flight Booker is your go-to platform for booking flights and managing your travel plans.">
+        <title>{% block title %}Flight App{% endblock %}</title>
+        <link rel="stylesheet"
+              href="{{ url_for('static', filename='css/base.css') }}">
+        {% block styles %}{% endblock %}
+    </head>
+    <body>
+        {% if "user_id" in session %}
+            <nav class="navbar">
+                <div class="navbar-links">
+                    <a href="{{ url_for("dashboard") }}"
+                       class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a>
+                    <a href="{{ url_for("book_flight") }}"
+                       class="{% if request.endpoint == 'book_flight' %}active{% endif %}">Book Flight</a>
+                    <a href="{{ url_for("my_bookings") }}"
+                       class="{% if request.endpoint == 'my_bookings' %}active{% endif %}">My Bookings</a>
+                    <a href="{{ url_for("account_settings") }}"
+                       class="{% if request.endpoint == 'account_settings' %}active{% endif %}">Account Settings</a>
+                </div>
+                <form action="{{ url_for("logout") }}" method="post">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        {% endif %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

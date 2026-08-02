@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Flight Booker - Login{% endblock %}
+{% block styles %}
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="plane">🛬</div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to your Flight Booker account</p>
+    <form action="{{ url_for("login_post") }}" method="post" autocomplete="off">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email"
+               name="email"
+               placeholder="Enter your email"
+               autocomplete="off"
+               required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password"
+               name="password"
+               placeholder="Enter your password"
+               autocomplete="off"
+               required>
+      </div>
+      {% if error %}
+        <div class="error-message">{{ error }}</div>
+      {% endif %}
+      <button type="submit">Login</button>
+    </form>
+    <div class="link-container">
+      Don't have an account?
+      <a href="{{ url_for("create_account") }}">Create one</a>
+    </div>
+  </div>
+{% endblock %}

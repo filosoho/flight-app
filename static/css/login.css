@@ -1,0 +1,18 @@
+body {
+  background: url("/static/assets/images/clouds-login.jpg") no-repeat center
+    bottom;
+}
+
+main {
+  height: 100vh;
+}
+
+button {
+  margin-top: 32px;
+}
+
+.error-message {
+  color: #cc0000;
+  font-size: 14px;
+  padding-top: 12px;
+}

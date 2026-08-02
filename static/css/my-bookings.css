@@ -1,0 +1,173 @@
+body {
+  align-items: flex-start;
+  background-attachment: fixed;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url("../images/dashboard-background.jpg");
+  background-position: center;
+  background-size: cover;
+  height: auto;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.bookings-container {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 40px 0;
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background: #003366;
+  color: white;
+}
+
+th,
+td {
+  padding: 16px;
+  text-align: left;
+}
+
+tbody tr:not(.cancelled-row):nth-child(even) {
+  background: #f7f9fc;
+}
+
+tbody tr:hover {
+  background: #eef5ff;
+}
+
+.status {
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+
+.confirmed {
+  color: #1d7a1d;
+  background: #dff7df;
+}
+
+.cancelled {
+  background: #ffdede;
+  color: #b70000;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+
+.primary-button,
+.secondary-button {
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.primary-button {
+  background: #0077ff;
+  color: white;
+}
+
+.primary-button:hover {
+  background: #005fcc;
+}
+
+.secondary-button {
+  background: white;
+  border: 2px solid #003366;
+  color: #003366;
+}
+
+.secondary-button:hover {
+  background: #003366;
+  color: white;
+}
+
+.cancel-button {
+  background: #d32f2f;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 18px;
+}
+
+.cancel-button:hover {
+  background: #b71c1c;
+}
+
+.cancel-button:disabled {
+  background: #bdbdbd;
+  color: #666;
+  cursor: default;
+}
+
+.cancel-button:disabled:hover {
+  background: #bdbdbd;
+}
+
+tr.cancelled-row td {
+  opacity: 0.4;
+}
+
+tr.cancelled-row td:last-child {
+  opacity: 1;
+}
+
+tr.cancelled-row:hover {
+  background: #fff;
+}
+
+.status.cancelled {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.status.confirmed {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.rebook-button {
+  background: #2e7d32;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 18px;
+  transition: background-color 0.2s;
+}
+
+.rebook-button:hover {
+  background: #1b5e20;
+}
