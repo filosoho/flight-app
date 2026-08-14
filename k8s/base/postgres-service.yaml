@@ -3,7 +3,6 @@ kind: Service
 
 metadata:
   name: postgres
-  namespace: flight-app-dev
 
 spec:
   selector:
