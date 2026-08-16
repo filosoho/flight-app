@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: flight-app
-          image: filosoho/flight-app:0.1.3
+          image: filosoho/flight-app
 
           ports:
             - containerPort: 5000

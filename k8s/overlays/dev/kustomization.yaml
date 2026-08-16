@@ -9,3 +9,7 @@ resources:
   - flight-app-config.yaml
   - flight-app-secret.yaml
   - postgres-secret.yaml
+
+images:
+  - name: filosoho/flight-app
+    newTag: 0.1.3

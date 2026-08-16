@@ -8,5 +8,4 @@ flight-app-backup.sql
 # Kubernetes secrets
 k8s/overlays/*/*-secret.yaml
 
-k8s/dev/*secret.yaml
 !k8s/examples/*.example.yaml
