@@ -17,6 +17,7 @@ def init_pool() -> SimpleConnectionPool:
             1,
             10,
             host=os.environ["DB_HOST"],
+            port=os.environ.get("DB_PORT", "5432"),
             database=os.environ["DB_NAME"],
             user=os.environ["DB_USER"],
             password=os.environ["DB_PASSWORD"],
