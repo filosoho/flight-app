@@ -8,6 +8,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from database import execute_query
 
+APP_VERSION = "0.1.4"
+
 app = Flask(__name__)
 
 
@@ -47,7 +49,7 @@ def home():
 
 @app.route("/health")
 def health():
-    return {"status": "ok"}, 200
+    return {"status": "ok", "version": APP_VERSION}
 
 
 @app.route("/create-account", methods=["GET"])

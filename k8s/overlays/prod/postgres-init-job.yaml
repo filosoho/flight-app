@@ -1,0 +1,55 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgres-init
+  namespace: flight-app-prod
+spec:
+  backoffLimit: 5
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: postgres-init
+          image: postgres:18
+          env:
+            - name: PGHOST
+              value: postgres
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_DB
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+          command:
+            - /bin/sh
+            - -c
+            - |
+              until pg_isready; do
+                echo "Waiting for PostgreSQL..."
+                sleep 2
+              done
+
+              echo "PostgreSQL is ready. Initializing database..."
+
+              psql -v ON_ERROR_STOP=1 -f /scripts/init.sql
+
+              echo "Database initialization complete."
+          volumeMounts:
+            - name: init-script
+              mountPath: /scripts
+              readOnly: true
+      volumes:
+        - name: init-script
+          configMap:
+            name: postgres-init
